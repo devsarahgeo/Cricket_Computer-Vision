@@ -1,0 +1,15 @@
+names:
+- '-1'
+- ball
+- bat
+- pitch
+nc: 4
+roboflow:
+  license: CC BY 4.0
+  project: cricket-oqrza
+  url: https://universe.roboflow.com/cricket-rodct/cricket-oqrza/dataset/1
+  version: 1
+  workspace: cricket-rodct
+test: ../test/images
+train: ../train/images
+val: ../valid/images

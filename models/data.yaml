@@ -1,0 +1,16 @@
+names:
+- Batsman
+- Bowler
+- Umpire
+- Wicket Keeper
+- players
+nc: 5
+roboflow:
+  license: CC BY 4.0
+  project: cricket-players-mugu4
+  url: https://universe.roboflow.com/neel-ckwq4/cricket-players-mugu4/dataset/1
+  version: 1
+  workspace: neel-ckwq4
+test: ../test/images
+train: Cricket-Players-1/train/images
+val: Cricket-Players-1/valid/images
