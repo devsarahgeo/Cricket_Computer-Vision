@@ -14,7 +14,7 @@ homography_path = os.path.join(base_dir, "models",      "homography.npy")
 output_path     = os.path.join(base_dir, "output",      "hawkeye_fixed_v3.mp4")
 
 # ---------------------------
-# LOAD MODEL & HOMOGRAPHY
+# LOAD MODEL
 # ---------------------------
 model = YOLO(model_path)
 H     = np.load(homography_path)
