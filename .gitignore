@@ -4,5 +4,5 @@ notebooks/val
 notebooks/runs
 /Users/sarah/Desktop/git/cricket_opencv/Cricket-Players-1/ball_acquisition/__pycache__
 *.pyc
+models/
 *.png
-/Users/sarah/Desktop/git/cricket_opencv/.DS_Store

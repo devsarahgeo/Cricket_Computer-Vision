@@ -1,6 +1,6 @@
 """
 Ball Detector with Interpolation
-=================================
+
 Two-pass approach:
   Pass 1 — detect_all_positions(): run ball_detector.pt on every frame,
             record {frame_num: (cx, cy)} for confident detections.
@@ -17,41 +17,23 @@ import os
 import numpy as np
 from ultralytics import YOLO
 
-# ---------------------------------------------------------------------------
 # PATHS
-# ---------------------------------------------------------------------------
 base_dir        = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 BALL_MODEL_PATH = os.path.join(base_dir, "models", "ball_detector.pt")
 
-# ---------------------------------------------------------------------------
 # CONSTANTS
-# ---------------------------------------------------------------------------
-MAX_GAP        = 15     # frames — gaps larger than this mean ball is gone
+MAX_GAP        = 15     # frames, gaps larger than this mean ball is gone
 CONF_THRES     = 0.3
 
-REAL_COLOR     = (0,   0, 255)   # red   — actual detection
-INTERP_COLOR   = (0, 165, 255)   # orange — interpolated position
-ARROW_OFFSET   = 40   # px above ball — height of the triangle
-
-
-# ---------------------------------------------------------------------------
-# PUBLIC API
-# ---------------------------------------------------------------------------
+REAL_COLOR     = (0,   0, 255)   # red, actual detection
+INTERP_COLOR   = (0, 165, 255)   # orange, interpolated position
+ARROW_OFFSET   = 40   # px above ball, height of the triangle
 
 def load_ball_model():
-    """Load and return the ball detector model."""
     return YOLO(BALL_MODEL_PATH)
 
 
 def detect_all_positions(video_path, model, conf_thres=CONF_THRES):
-    """
-    Pass 1 — scrub through every frame and record ball detections.
-
-    Returns
-    -------
-    dict  {frame_num (int): (cx, cy)}   — only frames where ball was found.
-    int   total_frames
-    """
     cap = cv2.VideoCapture(video_path)
     total = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     detections = {}
@@ -89,13 +71,13 @@ def interpolate_positions(detections, total_frames, max_gap=MAX_GAP):
     ----------
     detections   : {frame_num: (cx, cy)}
     total_frames : int
-    max_gap      : int  — gaps larger than this are not interpolated
+    max_gap      : int, gaps larger than this are not interpolated
 
     Returns
     -------
     dict  {frame_num: (cx, cy, is_interpolated)}
-        is_interpolated=False → real detection
-        is_interpolated=True  → linearly filled gap
+        is_interpolated=False: real detection
+        is_interpolated=True: linearly filled gap
     """
     if not detections:
         return {}
@@ -162,7 +144,6 @@ def draw_ball_at(frame, positions, frame_num):
 
     cv2.fillPoly(frame, [triangle], color)
 
-    # Thin outline for crispness
     cv2.polylines(frame, [triangle], isClosed=True, color=color, thickness=1)
 
     return frame

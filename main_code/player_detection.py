@@ -1,4 +1,6 @@
 """
+This is the main entry pt in script
+
 Cricket Player Tracking — ByteTrack via Ultralytics YOLOv8
 ==========================================================
 Pipeline:
@@ -8,18 +10,6 @@ Pipeline:
   4. Visualisation (bounding box + "Player ID: <id>")
   5. Resource cleanup
 
-How ByteTrack associates detections across frames:
-  - IoU overlap    : matches new detections to existing tracks by bounding-box
-                     intersection-over-union (high overlap → same player).
-  - Kalman filter  : predicts where each track will be next frame, so a
-                     partially-occluded or missed detection can still be linked
-                     to the right track.
-  - Two-stage match: first matches high-confidence detections, then re-tries
-                     low-confidence ones against unmatched tracks, which helps
-                     recover players that briefly disappear (occlusion).
-  - Lost buffer    : keeps a track "alive" for several frames after the last
-                     detection; if the player reappears within that window the
-                     same ID is reused, giving stable IDs across the video.
 """
 
 import cv2
@@ -32,9 +22,7 @@ from team_player_assignment import (ask_team_colors, load_clip_model,
 from keypoint_detection import (CricketAnalytics, build_split_frame,
                                 OUTPUT_DIR, SPLIT_PANEL_W)
 
-# ===========================================================================
-# 1. MODEL LOADING
-# ===========================================================================
+# MODEL LOADING
 base_dir        = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 model_path      = os.path.join(base_dir, "models", "player_detector.pt")
 video_path      = os.path.join(base_dir, "input_video", "shrt_video.mp4")
@@ -47,7 +35,7 @@ model = YOLO(model_path)
 team_colors  = ask_team_colors()
 clip_model, clip_processor = load_clip_model()
 
-# Ball detector — Pass 1: detect + interpolate before main loop
+# Ball detector — detect + interpolate before main loop
 ball_model  = load_ball_model()
 ball_dets, _ball_total = detect_all_positions(video_path, ball_model)
 ball_positions         = interpolate_positions(ball_dets, _ball_total)
@@ -63,9 +51,7 @@ CONF_THRES = 0.1
 BBOX_COLOR  = (0, 255, 0)    # green
 TEXT_COLOR  = (255, 255, 255) # white
 
-# ===========================================================================
-# 2. VIDEO SETUP
-# ===========================================================================
+# VIDEO SETUP
 cap = cv2.VideoCapture(video_path)
 fps = int(cap.get(cv2.CAP_PROP_FPS))
 w   = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -93,9 +79,7 @@ print(f"Output      : {output_path}")
 print(f"Analytics   : {analytics_path}")
 print("-" * 55)
 
-# ===========================================================================
-# 3. DETECTION + TRACKING LOOP
-# ===========================================================================
+# DETECTION + TRACKING LOOP
 frame_num = 0
 
 while cap.isOpened():
@@ -127,9 +111,7 @@ while cap.isOpened():
         out_analytics.write(build_split_frame(frame, tactical))
         continue
 
-    # ===========================================================================
-    # 4. VISUALISATION  +  collect tracks for analytics
-    # ===========================================================================
+    # VISUALISATION  +  collect tracks for analytics
     player_tracks = []   # (track_id, x1, y1, x2, y2, team_idx)
 
     for box in results.boxes:
@@ -174,9 +156,7 @@ while cap.isOpened():
     out.write(frame)
     out_analytics.write(build_split_frame(frame, tactical))
 
-# ===========================================================================
-# 5. RESOURCE CLEANUP  +  ANALYTICS EXPORT
-# ===========================================================================
+# RESOURCE CLEANUP  +  ANALYTICS EXPORT
 cap.release()
 out.release()
 out_analytics.release()

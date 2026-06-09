@@ -1,0 +1,107 @@
+[
+  {
+    "player_id": 1,
+    "frames_seen": 13,
+    "distance_m": 0.65,
+    "avg_speed_kmh": 4.89,
+    "max_speed_kmh": 10.8
+  },
+  {
+    "player_id": 2,
+    "frames_seen": 36,
+    "distance_m": 36.96,
+    "avg_speed_kmh": 20.53,
+    "max_speed_kmh": 45.4
+  },
+  {
+    "player_id": 5,
+    "frames_seen": 14,
+    "distance_m": 7.38,
+    "avg_speed_kmh": 2.72,
+    "max_speed_kmh": 20.96
+  },
+  {
+    "player_id": 9,
+    "frames_seen": 47,
+    "distance_m": 10.63,
+    "avg_speed_kmh": 6.8,
+    "max_speed_kmh": 34.32
+  },
+  {
+    "player_id": 11,
+    "frames_seen": 35,
+    "distance_m": 5.28,
+    "avg_speed_kmh": 5.33,
+    "max_speed_kmh": 35.28
+  },
+  {
+    "player_id": 14,
+    "frames_seen": 9,
+    "distance_m": 5.93,
+    "avg_speed_kmh": 1.16,
+    "max_speed_kmh": 1.74
+  },
+  {
+    "player_id": 19,
+    "frames_seen": 4,
+    "distance_m": 204.33,
+    "avg_speed_kmh": 0.0,
+    "max_speed_kmh": 0.0
+  },
+  {
+    "player_id": 23,
+    "frames_seen": 21,
+    "distance_m": 2.44,
+    "avg_speed_kmh": 6.25,
+    "max_speed_kmh": 41.56
+  },
+  {
+    "player_id": 28,
+    "frames_seen": 4,
+    "distance_m": 0.37,
+    "avg_speed_kmh": 2.52,
+    "max_speed_kmh": 3.4
+  },
+  {
+    "player_id": 31,
+    "frames_seen": 44,
+    "distance_m": 5.24,
+    "avg_speed_kmh": 6.98,
+    "max_speed_kmh": 22.88
+  },
+  {
+    "player_id": 32,
+    "frames_seen": 71,
+    "distance_m": 7382.15,
+    "avg_speed_kmh": 14.75,
+    "max_speed_kmh": 39.41
+  },
+  {
+    "player_id": 44,
+    "frames_seen": 3,
+    "distance_m": 10914.15,
+    "avg_speed_kmh": 0.0,
+    "max_speed_kmh": 0.0
+  },
+  {
+    "player_id": 64,
+    "frames_seen": 32,
+    "distance_m": 13.47,
+    "avg_speed_kmh": 7.02,
+    "max_speed_kmh": 33.26
+  },
+  {
+    "player_id": 65,
+    "frames_seen": 52,
+    "distance_m": 401.2,
+    "avg_speed_kmh": 11.67,
+    "max_speed_kmh": 43.9
+  },
+  {
+    "player_id": 70,
+    "frames_seen": 4,
+    "distance_m": 135.34,
+    "avg_speed_kmh": 0.0,
+    "max_speed_kmh": 0.0
+  }
+]
