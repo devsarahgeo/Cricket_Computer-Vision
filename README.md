@@ -1,4 +1,4 @@
-player_detection.py — main entry point. Run this to process a video.
+player_detection.py — main entry point. Run this to process final video.
   - Loads player detector + CLIP + ball detector + keypoint analytics                                                             
   - Tracks players with ByteTrack, colors boxes by team jersey                                                                                                        
   - Writes two output videos: player_tracking.mp4 and analytics_tracking.mp4
