@@ -6,3 +6,5 @@ notebooks/runs
 *.pyc
 models/
 *.png
+input_video/
+output/
